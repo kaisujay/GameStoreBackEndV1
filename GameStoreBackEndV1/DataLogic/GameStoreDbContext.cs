@@ -23,11 +23,18 @@ namespace GameStoreBackEndV1.DataLogic
 
         public DbSet<GamePlatformTypeDataModel> GamePlatformTypes { get; set; }
 
+        public DbSet<CartDataModel> Carts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<GamePlatformTypeDataModel>()    //Creating a composite Key. Since "[Column(order=1/2)]" is not working
+            modelBuilder.Entity<GamePlatformTypeDataModel>()    //Creating a composite Key like this. Since "[Column(order=1/2)]" is not working
                 .HasKey(x => new { x.GameId, x.PlatformTypeId});
+
+            modelBuilder.Entity<CartDataModel>() //We are using "List<Game>" so no Keys can be generated for "Game"
+                .HasNoKey()
+                .HasIndex(x => x.PlayerId)
+                .IsUnique(false);
         }
     }
 }
