@@ -25,6 +25,8 @@ namespace GameStoreBackEndV1.DataLogic
 
         public DbSet<CartDataModel> Carts { get; set; }
 
+        public DbSet<WishListDataModel> WishLists { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
@@ -32,6 +34,11 @@ namespace GameStoreBackEndV1.DataLogic
                 .HasKey(x => new { x.GameId, x.PlatformTypeId});
 
             modelBuilder.Entity<CartDataModel>() //We are using "List<Game>" so no Keys can be generated for "Game"
+                .HasNoKey()
+                .HasIndex(x => x.PlayerId)
+                .IsUnique(false);
+
+            modelBuilder.Entity<WishListDataModel>()
                 .HasNoKey()
                 .HasIndex(x => x.PlayerId)
                 .IsUnique(false);
