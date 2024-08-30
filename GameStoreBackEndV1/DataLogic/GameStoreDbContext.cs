@@ -27,6 +27,8 @@ namespace GameStoreBackEndV1.DataLogic
 
         public DbSet<WishListDataModel> WishLists { get; set; }
 
+        public DbSet<OrderHistoryDataModel> OrderHistorys { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
@@ -39,6 +41,11 @@ namespace GameStoreBackEndV1.DataLogic
                 .IsUnique(false);
 
             modelBuilder.Entity<WishListDataModel>()
+                .HasNoKey()
+                .HasIndex(x => x.PlayerId)
+                .IsUnique(false);
+
+            modelBuilder.Entity<OrderHistoryDataModel>()
                 .HasNoKey()
                 .HasIndex(x => x.PlayerId)
                 .IsUnique(false);
