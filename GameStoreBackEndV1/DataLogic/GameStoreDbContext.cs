@@ -29,6 +29,8 @@ namespace GameStoreBackEndV1.DataLogic
 
         public DbSet<OrderHistoryDataModel> OrderHistorys { get; set; }
 
+        public DbSet<RatingDataModel> Ratings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
