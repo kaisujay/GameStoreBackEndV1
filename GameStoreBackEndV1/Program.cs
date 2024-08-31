@@ -1,8 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using GameStoreBackEndV1.DataLogic;
 using GameStoreBackEndV1.NuGetDependencies;
-using GameStoreBackEndV1.ObjectLogic;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

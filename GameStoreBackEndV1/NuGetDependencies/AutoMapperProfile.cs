@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GameStoreBackEndV1.ObjectLogic.TableDataModels;
 
-namespace GameStoreBackEndV1.ObjectLogic
+namespace GameStoreBackEndV1.NuGetDependencies
 {
     public class AutoMapperProfile : Profile
     {

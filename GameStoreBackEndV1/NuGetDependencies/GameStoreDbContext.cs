@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameStoreBackEndV1.DataLogic
+namespace GameStoreBackEndV1.NuGetDependencies
 {
     public class GameStoreDbContext : DbContext
     {
         public GameStoreDbContext(DbContextOptions<GameStoreDbContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<PlayerTableDataModel> Players { get; set; }
@@ -35,7 +35,7 @@ namespace GameStoreBackEndV1.DataLogic
         {
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<GamePlatformTypeDataModel>()    //Creating a composite Key like this. Since "[Column(order=1/2)]" is not working
-                .HasKey(x => new { x.GameId, x.PlatformTypeId});
+                .HasKey(x => new { x.GameId, x.PlatformTypeId });
 
             modelBuilder.Entity<CartDataModel>() //We are using "List<Game>" so no Keys can be generated for "Game"
                 .HasNoKey()
