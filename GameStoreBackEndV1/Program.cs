@@ -1,4 +1,5 @@
 using GameStoreBackEndV1.DataLogic;
+using GameStoreBackEndV1.ObjectLogic;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,10 @@ builder.Services.AddDbContext<GameStoreDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("GameStoreDbContextConnnectionString"));
 });
+#endregion
+
+#region AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 #endregion
 
 var app = builder.Build();
