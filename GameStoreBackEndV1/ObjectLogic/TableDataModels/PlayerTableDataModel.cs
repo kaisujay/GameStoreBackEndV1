@@ -36,5 +36,9 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 
         [Required]
         public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        [MaxLength(15)]
+        public string Country { get; set; }
     }
 }
