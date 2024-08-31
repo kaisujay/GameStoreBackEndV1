@@ -1,10 +1,21 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using GameStoreBackEndV1.DataLogic;
+using GameStoreBackEndV1.NuGetDependencies;
 using GameStoreBackEndV1.ObjectLogic;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+#region Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(module =>
+{
+    module.RegisterModule<AutoFacModule>();
+    //module.RegisterAssemblyModules(typeof(Program).Assembly);     // This one can also be used globally
+})).ConfigureServices(services => services.AddAutofac());
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
