@@ -4,6 +4,6 @@ namespace GameStoreBackEndV1.ServiceLogic.EmailService
 {
     public interface IEmailService
     {
-        void SendEmail(SendEmailDto email);
+        Task SendEmailAsync(SendEmailDto email);
     }
 }
