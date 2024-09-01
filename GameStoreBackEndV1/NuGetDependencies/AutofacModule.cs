@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using GameStoreBackEndV1.ServiceLogic.EmailService;
 
 namespace GameStoreBackEndV1.NuGetDependencies
 {
@@ -10,6 +11,8 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //builder.RegisterType<Test>().As<ITest>().SingleInstance();             //Singleton
             //builder.RegisterType<Test>().As<ITest>().InstancePerLifetimeScope();   //Scoped
             //builder.RegisterType<Test>().As<ITest>().InstancePerDependency();      //Transient
+
+            builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
         }
     }
 }
