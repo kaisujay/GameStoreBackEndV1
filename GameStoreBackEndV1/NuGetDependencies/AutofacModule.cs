@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
 
 namespace GameStoreBackEndV1.NuGetDependencies
@@ -13,6 +14,7 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //builder.RegisterType<Test>().As<ITest>().InstancePerDependency();      //Transient
 
             builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
+            builder.RegisterType<CountryService>().As<ICountryService>().SingleInstance();
         }
     }
 }

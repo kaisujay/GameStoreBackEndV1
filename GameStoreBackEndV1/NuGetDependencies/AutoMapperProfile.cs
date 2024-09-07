@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStoreBackEndV1.ObjectLogic.ObjectDTOs.Country;
 using GameStoreBackEndV1.ObjectLogic.TableDataModels;
 
 namespace GameStoreBackEndV1.NuGetDependencies
@@ -60,6 +61,16 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //WishList
             CreateMap<WishListDataModel, CreateWishListDto>().ReverseMap();
             CreateMap<WishListDataModel, DisplayWishListDto>().ReverseMap();
+
+            //Country
+            CreateMap<CountryDto, DisplayCountryDto>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name.Common))
+                .ForPath(dest => dest.Currency.Name, opt => opt.MapFrom(src => src.Currencies.Shp.Name))        // Use of "ForPath", here with "ForMember" error
+                .ForPath(dest => dest.Currency.Symbol, opt => opt.MapFrom(src => src.Currencies.Shp.Symbol))
+                .ForMember(dest => dest.GoogleMaps, opt => opt.MapFrom(src => src.Maps.GoogleMaps))
+                .ForMember(dest => dest.TimeZones, opt => opt.MapFrom(src => src.Timezones))
+                .ForMember(dest => dest.Flag, opt => opt.MapFrom(src => src.Flags.Png))
+                .ReverseMap();
         }
     }
 }

@@ -15,6 +15,16 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(module 
 })).ConfigureServices(services => services.AddAutofac());
 #endregion
 
+#region HttpClient
+builder.Services.AddHttpClient();
+
+//builder.Services.AddHttpClient("CountryApi", client =>
+//{
+//    client.BaseAddress = new Uri(builder.Configuration.GetSection("CountryApiUrl").Value);
+//    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "your_token");
+//});
+#endregion
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
