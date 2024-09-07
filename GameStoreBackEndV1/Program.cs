@@ -30,6 +30,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Memory Cache
+builder.Services.AddMemoryCache();
+#endregion
 
 #region DbContext
 builder.Services.AddDbContext<GameStoreDbContext>(option =>
