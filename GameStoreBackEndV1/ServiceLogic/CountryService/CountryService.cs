@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using GameStoreBackEndV1.ObjectLogic.ObjectDTOs.Country;
+using GameStoreBackEndV1.ServiceLogic.ExceptionService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http;
 
 namespace GameStoreBackEndV1.ServiceLogic.CountryService
@@ -39,6 +41,12 @@ namespace GameStoreBackEndV1.ServiceLogic.CountryService
             var httpClient = _httpClientFactory.CreateClient();
 
             var response = await httpClient.GetAsync(_configuration.GetSection("CountryApiUrl").Value);
+
+            if (response.StatusCode != (HttpStatusCode)StatusCodes.Status200OK) 
+            { 
+                throw new ExternalResourceNotFoundException("SUJAY Error"); 
+            }
+
             var responseBody = await response.Content.ReadAsStringAsync();
 
             var countryList = JsonConvert.DeserializeObject<List<CountryDto>>(responseBody);

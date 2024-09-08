@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GameStoreBackEndV1.NuGetDependencies;
+using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,6 +59,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();    //Added Because using Identity
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandleMiddleware>();
 
 app.MapControllers();
 
