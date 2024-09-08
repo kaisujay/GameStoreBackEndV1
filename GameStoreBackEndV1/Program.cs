@@ -4,10 +4,30 @@ using GameStoreBackEndV1.NuGetDependencies;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+#region Serilog
+#region Serilog Config 1 : Config in "Program.cs" file
+//Log.Logger = new LoggerConfiguration()
+//    .MinimumLevel.Information()
+//    .WriteTo.File("Logs/Sujay-log-.txt",rollingInterval:RollingInterval.Minute)
+//    .CreateLogger();
+#endregion
+
+#region Serilog Config 2 : Traditional old way
+//Log.Logger = new LoggerConfiguration()
+//    .ReadFrom.Configuration(builder.Configuration).CreateLogger();
+#endregion
+
+#region Serilog Config 3 : Recommended way 
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+#endregion
+#endregion
 
 #region Autofac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(module =>
@@ -59,6 +79,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//app.UseSerilogRequestLogging();   //Serilog : Not strictly necessary. Saw 2 diff ENTRY for "CountryService" block
 
 app.UseAuthentication();    //Added Because using Identity
 app.UseAuthorization();

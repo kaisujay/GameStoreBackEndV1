@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Serilog;
 using System.Net;
 
 namespace GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling
@@ -13,6 +14,7 @@ namespace GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling
             var requestPath = context.HttpContext.Request.Path;
 
             //context.HttpContext.Response.StatusCode
+            Log.Error("Got Error : ExternalResourceNotFoundException");
 
             var message = $"\nTime: {DateTime.Now}, Controller: {controllerName}, Action: {actionName}, Exception: {context.Exception.Message}";
 
