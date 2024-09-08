@@ -42,7 +42,7 @@ namespace GameStoreBackEndV1.ServiceLogic.CountryService
 
             var response = await httpClient.GetAsync(_configuration.GetSection("CountryApiUrl").Value);
 
-            if (response.StatusCode != (HttpStatusCode)StatusCodes.Status200OK) 
+            if (response.StatusCode != (HttpStatusCode)StatusCodes.Status200OK) //This will be called when URL not found
             { 
                 throw new ExternalResourceNotFoundException("SUJAY Error"); 
             }

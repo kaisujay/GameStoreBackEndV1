@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 namespace GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class ExceptionHandleMiddleware
+    public class ExceptionHandleMiddleware : IMiddleware
     {
-        private readonly RequestDelegate _next;
 
-        public ExceptionHandleMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
-        public async Task InvokeAsync(HttpContext httpContext)
+        public async Task InvokeAsync(HttpContext httpContext, RequestDelegate next)
         {
             try
             {
-                await _next(httpContext);
+                await next(httpContext);
             }
             catch (ExternalResourceNotFoundException ex)
             {

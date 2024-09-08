@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
+using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 
 namespace GameStoreBackEndV1.NuGetDependencies
 {
@@ -12,6 +13,8 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //builder.RegisterType<Test>().As<ITest>().SingleInstance();             //Singleton
             //builder.RegisterType<Test>().As<ITest>().InstancePerLifetimeScope();   //Scoped
             //builder.RegisterType<Test>().As<ITest>().InstancePerDependency();      //Transient
+
+            builder.RegisterType<ExceptionHandleMiddleware>().InstancePerDependency();
 
             builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
             builder.RegisterType<CountryService>().As<ICountryService>().SingleInstance();
