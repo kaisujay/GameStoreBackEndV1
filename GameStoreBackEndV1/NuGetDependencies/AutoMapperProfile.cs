@@ -9,15 +9,18 @@ namespace GameStoreBackEndV1.NuGetDependencies
         public AutoMapperProfile()
         {
             //Role
-            CreateMap<RoleTableDataModel, CreateRoleDto>().ReverseMap();
-            CreateMap<RoleTableDataModel, DisplayRoleDto>().ReverseMap();
+            CreateMap<RoleTableDataModel, RoleDto>().ReverseMap();
+            CreateMap<RoleDto, CreateRoleDto>().ReverseMap();
+            CreateMap<RoleDto, DisplayRoleDto>().ReverseMap();
 
             //PlayerRole
-            CreateMap<PlayerRoleTableDataModel, CreatePlayerRoleDto>().ReverseMap();
-            CreateMap<PlayerRoleTableDataModel, DisplayPlayerRoleDto>().ReverseMap();
+            CreateMap<PlayerRoleTableDataModel, PlayerRoleDto>().ReverseMap();
+            CreateMap<PlayerRoleDto, CreatePlayerRoleDto>().ReverseMap();
+            CreateMap<PlayerRoleDto, DisplayPlayerRoleDto>().ReverseMap();
 
             //Player
-            CreateMap<CreatePlayerDto, PlayerTableDataModel>()
+            CreateMap<PlayerDto, PlayerTableDataModel>().ReverseMap();
+            CreateMap<CreatePlayerDto, PlayerDto>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
                 .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.Password))      // This is BAD
                 .ReverseMap()
@@ -26,41 +29,48 @@ namespace GameStoreBackEndV1.NuGetDependencies
                 .ForMember(dest => dest.ConfirmEmail, opt => opt.Ignore())
                 .ForMember(dest => dest.ConfirmPassword, opt => opt.Ignore());
 
-            CreateMap<UpdatePlayerDto, PlayerTableDataModel>()
+            CreateMap<UpdatePlayerDto, PlayerDto>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
                 .ReverseMap()
                 .ForMember(dest => dest.FirstName, opt => opt.Ignore())
                 .ForMember(dest => dest.LastName, opt => opt.Ignore());
-            CreateMap<PlayerTableDataModel, ResetPasswordPlayerDto>().ReverseMap();
-            CreateMap<PlayerTableDataModel, DisplayPlayerDto>().ReverseMap();
+            CreateMap<PlayerDto, ResetPasswordPlayerDto>().ReverseMap();
+            CreateMap<PlayerDto, DisplayPlayerDto>().ReverseMap();
 
             //Cart
-            CreateMap<CartDataModel, CreateAndUpdateCartDto>().ReverseMap();
-            CreateMap<CartDataModel, DisplayCartDto>().ReverseMap();
+            CreateMap<CartDataModel, CartDto>().ReverseMap();
+            CreateMap<CartDto, CreateAndUpdateCartDto>().ReverseMap();
+            CreateMap<CartDto, DisplayCartDto>().ReverseMap();
 
             //Game
-            CreateMap<GameDataModel, CreateAndUpdateGameDto>().ReverseMap();
-            CreateMap<GameDataModel, DisplayGameDto>().ReverseMap();
+            CreateMap<GameDataModel, GameDto>().ReverseMap();
+            CreateMap<GameDto, CreateAndUpdateGameDto>().ReverseMap();
+            CreateMap<GameDto, DisplayGameDto>().ReverseMap();
 
             //GamePlatformType
-            CreateMap<GamePlatformTypeDataModel, CreateGamePlatformTypeDto>().ReverseMap();
-            CreateMap<GamePlatformTypeDataModel, DisplayGamePlatformTypeDto>().ReverseMap();
+            CreateMap<GamePlatformTypeDataModel, GamePlatformTypeDto>().ReverseMap();
+            CreateMap<GamePlatformTypeDto, CreateGamePlatformTypeDto>().ReverseMap();
+            CreateMap<GamePlatformTypeDto, DisplayGamePlatformTypeDto>().ReverseMap();
 
             //PlatformType
-            CreateMap<PlatformTypeDataModel, CreatePlatformTypeDto>().ReverseMap();
-            CreateMap<PlatformTypeDataModel, DisplayPlatformTypeDto>().ReverseMap();
+            CreateMap<PlatformTypeDataModel, PlatformTypeDto>().ReverseMap();
+            CreateMap<PlatformTypeDto, CreatePlatformTypeDto>().ReverseMap();
+            CreateMap<PlatformTypeDto, DisplayPlatformTypeDto>().ReverseMap();
 
             //OrderHistory
-            CreateMap<OrderHistoryDataModel, CreateOrderHistoryDto>().ReverseMap();
-            CreateMap<OrderHistoryDataModel, DisplayOrderHistoryDto>().ReverseMap();
+            CreateMap<OrderHistoryDataModel, OrderHistoryDto>().ReverseMap();
+            CreateMap<OrderHistoryDto, CreateOrderHistoryDto>().ReverseMap();
+            CreateMap<OrderHistoryDto, DisplayOrderHistoryDto>().ReverseMap();
 
             //Rating
-            CreateMap<RatingDataModel, CreateRatingDto>().ReverseMap();
-            CreateMap<RatingDataModel, DisplayRatingDto>().ReverseMap();
+            CreateMap<RatingDataModel, RatingDto>().ReverseMap();
+            CreateMap<RatingDto, CreateRatingDto>().ReverseMap();
+            CreateMap<RatingDto, DisplayRatingDto>().ReverseMap();
 
             //WishList
-            CreateMap<WishListDataModel, CreateWishListDto>().ReverseMap();
-            CreateMap<WishListDataModel, DisplayWishListDto>().ReverseMap();
+            CreateMap<WishListDataModel, WishListDto>().ReverseMap();
+            CreateMap<WishListDto, CreateWishListDto>().ReverseMap();
+            CreateMap<WishListDto, DisplayWishListDto>().ReverseMap();
 
             //Country
             CreateMap<CountryDto, DisplayCountryDto>()
