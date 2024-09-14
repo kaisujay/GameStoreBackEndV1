@@ -39,4 +39,24 @@
             StatusCode = StatusCodes.Status400BadRequest;
         }
     }
+
+    public class DataAlreadyExistsException : Exception
+    {
+        public int StatusCode { get; set; }
+
+        public DataAlreadyExistsException() : base()
+        {
+            StatusCode = StatusCodes.Status409Conflict;
+        }
+
+        public DataAlreadyExistsException(string message) : base(message)
+        {
+            StatusCode = StatusCodes.Status409Conflict;
+        }
+
+        public DataAlreadyExistsException(string message, Exception innerException) : base(message, innerException)
+        {
+            StatusCode = StatusCodes.Status409Conflict;
+        }
+    }
 }
