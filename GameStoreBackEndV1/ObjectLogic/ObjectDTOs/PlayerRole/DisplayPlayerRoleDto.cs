@@ -4,7 +4,7 @@
     {
         public Guid PlayerRoleId { get; set; }
 
-        public PlayerRoleDto Player { get; set; }
+        public DisplayPlayerDto Player { get; set; }
 
         public DisplayRoleDto Role { get; set; }
     }

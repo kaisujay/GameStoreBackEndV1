@@ -8,7 +8,7 @@
 
         public Guid RoleId { get; set; }
 
-        public PlayerRoleDto Player { get; set; }
+        public PlayerDto Player { get; set; }
 
         public RoleDto Role { get; set; }
     }
