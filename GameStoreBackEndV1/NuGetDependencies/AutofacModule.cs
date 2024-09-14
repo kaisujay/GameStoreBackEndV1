@@ -1,9 +1,11 @@
 ﻿using Autofac;
 using GameStoreBackEndV1.DataLogic.Player;
+using GameStoreBackEndV1.DataLogic.Role;
 using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 using GameStoreBackEndV1.ServiceLogic.PlayerService;
+using GameStoreBackEndV1.ServiceLogic.RoleService;
 
 namespace GameStoreBackEndV1.NuGetDependencies
 {
@@ -23,6 +25,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<PlayerRepository>().As<IPlayerRepository>().InstancePerLifetimeScope();
             builder.RegisterType<PlayerService>().As<IPlayerService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<RoleRepository>().As<IRoleRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<RoleService>().As<IRoleService>().InstancePerLifetimeScope();
         }
     }
 }
