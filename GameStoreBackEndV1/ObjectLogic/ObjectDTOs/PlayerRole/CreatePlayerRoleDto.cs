@@ -4,15 +4,11 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 {
     public class CreatePlayerRoleDto
     {
-        [Required(ErrorMessage = "PlayerRoleId is required")]
-        public Guid PlayerRoleId { get; set; }
+        [Required(ErrorMessage = "Player Email is required")]
+        public string PlayerEmail { get; set; }
 
 
-        [Required(ErrorMessage = "PlayerId is required")]
-        public Guid PlayerId { get; set; }
-
-
-        [Required(ErrorMessage = "RoleId is required")]
-        public Guid RoleId { get; set; }
+        [Required(ErrorMessage = "Role Name is required")]
+        public string RoleName { get; set; }
     }
 }
