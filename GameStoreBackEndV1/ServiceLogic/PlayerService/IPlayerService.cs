@@ -6,14 +6,14 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
 {
     public interface IPlayerService : IService<PlayerDto, CreatePlayerDto, UpdatePlayerDto, DisplayPlayerDto>
     {
-        Task<DisplayPlayerDto> GetByUserNameAsync(string userName);
+        Task<PlayerDto> GetByUserNameAsync(string userName);
 
-        Task<DisplayPlayerDto> GetByEmailAsync(string email);
+        Task<PlayerDto> GetByEmailAsync(string email);
 
-        Task<DisplayPlayerDto> GetByPhoneNumberAsync(string phoneNumber);
+        Task<PlayerDto> GetByPhoneNumberAsync(string phoneNumber);
 
-        Task<IList<DisplayPlayerDto>> GetAllDateOfBirthAsync(DateTime date);
+        Task<IList<PlayerDto>> GetAllDateOfBirthAsync(DateTime date);
 
-        Task<DisplayPlayerDto> UpdateWalletBalanceAsync(Guid id, float balance);
+        Task<PlayerDto> UpdateWalletBalanceAsync(Guid id, float balance);
     }
 }

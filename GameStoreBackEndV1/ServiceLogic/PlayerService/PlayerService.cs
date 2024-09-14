@@ -18,50 +18,50 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
             _mapper = mapper;
         }
 
-        public async Task<IList<DisplayPlayerDto>> GetAllAsync()
+        public async Task<IList<PlayerDto>> GetAllAsync()
         {
             var result = await _playerRepository.GetAllAsync();
-            var mappedResult = _mapper.Map<IList<DisplayPlayerDto>>(result);
+            var mappedResult = _mapper.Map<IList<PlayerDto>>(result);
 
             return mappedResult;
         }
 
-        public async Task<DisplayPlayerDto> GetByIdAsync(Guid id)
+        public async Task<PlayerDto> GetByIdAsync(Guid id)
         {
             var result = await _playerRepository.GetByIdAsync(id);
-            var mappedResult = _mapper.Map<DisplayPlayerDto>(result);
+            var mappedResult = _mapper.Map<PlayerDto>(result);
 
             return mappedResult;
         }
 
-        public async Task<DisplayPlayerDto> GetByEmailAsync(string email)
+        public async Task<PlayerDto> GetByEmailAsync(string email)
         {
             var result = await _playerRepository.GetByEmailAsync(email);
-            var mappedResult = _mapper.Map<DisplayPlayerDto>(result);
+            var mappedResult = _mapper.Map<PlayerDto>(result);
 
             return mappedResult;
         }
 
-        public async Task<DisplayPlayerDto> GetByPhoneNumberAsync(string phoneNumber)
+        public async Task<PlayerDto> GetByPhoneNumberAsync(string phoneNumber)
         {
             var result = await _playerRepository.GetByPhoneNumberAsync(phoneNumber);
-            var mappedResult = _mapper.Map<DisplayPlayerDto>(result);
+            var mappedResult = _mapper.Map<PlayerDto>(result);
 
             return mappedResult;
         }
 
-        public async Task<DisplayPlayerDto> GetByUserNameAsync(string userName)
+        public async Task<PlayerDto> GetByUserNameAsync(string userName)
         {
             var result = await _playerRepository.GetByUserNameAsync(userName);
-            var mappedResult = _mapper.Map<DisplayPlayerDto>(result);
+            var mappedResult = _mapper.Map<PlayerDto>(result);
 
             return mappedResult;
         }
 
-        public async Task<IList<DisplayPlayerDto>> GetAllDateOfBirthAsync(DateTime date)
+        public async Task<IList<PlayerDto>> GetAllDateOfBirthAsync(DateTime date)
         {
             var result = await _playerRepository.GetAllDateOfBirthAsync(date);
-            var mappedResult = _mapper.Map<IList<DisplayPlayerDto>>(result);
+            var mappedResult = _mapper.Map<IList<PlayerDto>>(result);
 
             return mappedResult;
         }
@@ -78,7 +78,7 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
             return newCreatedGuid;
         }
 
-        public async Task<DisplayPlayerDto> UpdateAsync(Guid id, UpdatePlayerDto entity)
+        public async Task<PlayerDto> UpdateAsync(Guid id, UpdatePlayerDto entity)
         {
             var selectedPlayer = await _playerRepository.GetByIdAsync(id);
             var mappedPlayer = _mapper.Map<PlayerDto>(entity);
@@ -89,7 +89,7 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
 
             var res = await _playerRepository.UpdateAsync(mappedPlayer);
 
-            return _mapper.Map<DisplayPlayerDto>(res);
+            return _mapper.Map<PlayerDto>(res);
         }
 
         public async Task DeleteAsync(Guid id)
@@ -103,7 +103,7 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
             await _playerRepository.DeleteAsync(selectedPlayer);
         }
 
-        public async Task<DisplayPlayerDto> UpdateWalletBalanceAsync(Guid id, float walletBalance)
+        public async Task<PlayerDto> UpdateWalletBalanceAsync(Guid id, float walletBalance)
         {
             var selectedPlayer = await _playerRepository.GetByIdAsync(id);
             if (selectedPlayer == null)
@@ -119,7 +119,7 @@ namespace GameStoreBackEndV1.ServiceLogic.PlayerService
                 throw new NotFoundException("Updating Wallet balance failed");
             }
 
-            return _mapper.Map<DisplayPlayerDto>(res);
+            return _mapper.Map<PlayerDto>(res);
         }
     }
 }
