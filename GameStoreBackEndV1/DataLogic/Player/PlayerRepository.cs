@@ -43,7 +43,7 @@ namespace GameStoreBackEndV1.DataLogic.Player
 
         public async Task<PlayerDto> GetByEmailAsync(string email)
         {
-            var result = await _dbContext.Players.Where(x => string.Equals(x.Email, email, StringComparison.OrdinalIgnoreCase)).FirstOrDefaultAsync();
+            var result = await _dbContext.Players.Where(x => string.Equals(x.Email.ToLower(), email.ToLower())).FirstOrDefaultAsync();
             if (result == null)
             {
                 throw new NotFoundException("Player is not found with given Email");
@@ -67,7 +67,7 @@ namespace GameStoreBackEndV1.DataLogic.Player
 
         public async Task<PlayerDto> GetByUserNameAsync(string userName)
         {
-            var result = await _dbContext.Players.Where(x => string.Equals(x.UserName, userName, StringComparison.OrdinalIgnoreCase)).FirstOrDefaultAsync();
+            var result = await _dbContext.Players.Where(x => string.Equals(x.UserName.ToLower(), userName.ToLower())).FirstOrDefaultAsync();
             if (result == null)
             {
                 throw new NotFoundException("Player is not found with given UserName");
