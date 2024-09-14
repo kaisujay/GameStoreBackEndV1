@@ -33,6 +33,13 @@ namespace GameStoreBackEndV1.Controllers
             return Ok(res);
         }
 
+        [HttpGet("GetRole/{roleName}")]
+        public async Task<IActionResult> Get(string roleName)
+        {
+            var res = await _roleService.GetByNameAsync(roleName);
+            return Ok(res);
+        }
+
         [HttpPost("CreateRole")]
         public async Task<IActionResult> Post([FromBody] CreateRoleDto createRole)
         {

@@ -52,5 +52,13 @@ namespace GameStoreBackEndV1.ServiceLogic.RoleService
 
             return newCreatedGuid;
         }
+
+        public async Task<DisplayRoleDto> GetByNameAsync(string roleName)
+        {
+            var result = await _roleRepository.GetByNameAsync(roleName);
+            var mappedResult = _mapper.Map<DisplayRoleDto>(result);
+
+            return mappedResult;
+        }
     }
 }

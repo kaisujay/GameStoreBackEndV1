@@ -57,5 +57,17 @@ namespace GameStoreBackEndV1.DataLogic.Role
 
             return entity.RoleId;
         }
+
+        public async Task<RoleDto> GetByNameAsync(string roleName)
+        {
+            var result = await _dbContext.Roles.AsNoTracking().FirstOrDefaultAsync(x => x.RoleName == roleName);      // "AsNoTracking()" : Very IMP while Update
+            if (result == null)
+            {
+                throw new NotFoundException("Role is not found");
+            }
+            var mappedResult = _mapper.Map<RoleDto>(result);
+
+            return mappedResult;
+        }
     }
 }
