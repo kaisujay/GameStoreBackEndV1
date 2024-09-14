@@ -15,7 +15,8 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             //PlayerRole
             CreateMap<PlayerRoleTableDataModel, PlayerRoleDto>().ReverseMap();
-            CreateMap<PlayerRoleDto, CreatePlayerRoleDto>().ReverseMap();
+            CreateMap<PlayerRoleTableDataModel, PlayerRoleTableDto>().ReverseMap();
+            CreateMap<PlayerRoleDto, PlayerRoleTableDto>().ReverseMap();
             CreateMap<PlayerRoleDto, DisplayPlayerRoleDto>().ReverseMap();
 
             //Player
