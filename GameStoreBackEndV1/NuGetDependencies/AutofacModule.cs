@@ -1,7 +1,9 @@
 ﻿using Autofac;
+using GameStoreBackEndV1.DataLogic.Player;
 using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
+using GameStoreBackEndV1.ServiceLogic.PlayerService;
 
 namespace GameStoreBackEndV1.NuGetDependencies
 {
@@ -18,6 +20,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
             builder.RegisterType<CountryService>().As<ICountryService>().SingleInstance();
+
+            builder.RegisterType<PlayerRepository>().As<IPlayerRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<PlayerService>().As<IPlayerService>().InstancePerLifetimeScope();
         }
     }
 }
