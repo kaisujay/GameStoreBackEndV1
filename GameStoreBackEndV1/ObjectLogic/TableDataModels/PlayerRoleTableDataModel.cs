@@ -14,7 +14,7 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 
         public Guid RoleId { get; set; }
 
-        public PlayerRoleTableDataModel Player { get; set; }    //After "Add-Migration" before "Undate-Migration" add onDelete: ReferentialAction.Restrict);
+        public PlayerTableDataModel Player { get; set; }    //After "Add-Migration" before "Undate-Migration" add onDelete: ReferentialAction.Restrict);
 
         public RoleTableDataModel Role { get; set; }    //After "Add-Migration" before "Undate-Migration" add onDelete: ReferentialAction.Restrict);
     }
