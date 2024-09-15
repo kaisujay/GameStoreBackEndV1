@@ -2,8 +2,8 @@
 {
     public class DisplayGamePlatformTypeDto
     {
-        public DisplayGameDto Game { get; set; }
+        public Guid GameId { get; set; }
         
-        public PlatformTypeDto PlatformType { get; set; }
+        public Guid PlatformTypeId { get; set; }
     }
 }
