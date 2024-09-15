@@ -4,8 +4,8 @@
     {
         public Guid CartId { get; set; }
 
-        public DisplayPlayerDto? Player { get; set; }
+        public Guid? PlayerId { get; set; }
 
-        public List<DisplayGameDto> Games { get; set; }
+        public DisplayGameDto Games { get; set; }
     }
 }

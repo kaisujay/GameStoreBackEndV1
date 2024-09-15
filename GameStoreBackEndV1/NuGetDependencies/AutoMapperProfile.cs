@@ -41,7 +41,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //Cart
             CreateMap<CartDataModel, CartDto>().ReverseMap();
             CreateMap<CartDto, CreateAndUpdateCartDto>().ReverseMap();
-            CreateMap<CartDto, DisplayCartDto>().ReverseMap();
+            CreateMap<CartDto, DisplayCartDto>()
+                .ForMember(dest => dest.Games, opt => opt.MapFrom(src => src.Game))
+                .ReverseMap();
 
             //Game
             CreateMap<GameDataModel, GameDto>().ReverseMap();

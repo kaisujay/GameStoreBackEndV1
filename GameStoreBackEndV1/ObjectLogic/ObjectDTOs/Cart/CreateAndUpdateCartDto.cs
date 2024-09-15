@@ -9,7 +9,7 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 
 
         [Required(ErrorMessage = "GameId is required")]
-        public List<Guid> GameId { get; set; }
+        public Guid GameId { get; set; }
 
     }
 }

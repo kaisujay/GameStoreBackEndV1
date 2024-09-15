@@ -6,10 +6,10 @@
 
         public Guid? PlayerId { get; set; }
 
-        public List<Guid> GameId { get; set; }
+        public Guid GameId { get; set; }
 
         public PlayerDto? Player { get; set; }
 
-        public List<GameDto> Games { get; set; }
+        public GameDto Game { get; set; }
     }
 }
