@@ -1,10 +1,12 @@
 ﻿using Autofac;
+using GameStoreBackEndV1.DataLogic.Cart;
 using GameStoreBackEndV1.DataLogic.Game;
 using GameStoreBackEndV1.DataLogic.GamePlatformType;
 using GameStoreBackEndV1.DataLogic.PlatformType;
 using GameStoreBackEndV1.DataLogic.Player;
 using GameStoreBackEndV1.DataLogic.PlayerRole;
 using GameStoreBackEndV1.DataLogic.Role;
+using GameStoreBackEndV1.ServiceLogic.CartService;
 using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
@@ -48,6 +50,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<GamePlatformTypeRepository>().As<IGamePlatformTypeRepository>().InstancePerLifetimeScope();
             builder.RegisterType<GamePlatformTypeService>().As<IGamePlatformTypeService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<CartRepository>().As<ICartRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<CartService>().As<ICartService>().InstancePerLifetimeScope();
         }
     }
 }
