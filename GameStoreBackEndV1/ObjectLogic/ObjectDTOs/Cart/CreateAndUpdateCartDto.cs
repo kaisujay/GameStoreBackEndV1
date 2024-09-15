@@ -5,7 +5,7 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
     public class CreateAndUpdateCartDto
     {
         [Required(ErrorMessage = "PlayerId is required")]
-        public Guid? PlayerId { get; set; }
+        public Guid PlayerId { get; set; }
 
 
         [Required(ErrorMessage = "GameId is required")]
