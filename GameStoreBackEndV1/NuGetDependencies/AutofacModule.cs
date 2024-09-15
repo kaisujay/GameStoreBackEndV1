@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using GameStoreBackEndV1.DataLogic.Game;
+using GameStoreBackEndV1.DataLogic.PlatformType;
 using GameStoreBackEndV1.DataLogic.Player;
 using GameStoreBackEndV1.DataLogic.PlayerRole;
 using GameStoreBackEndV1.DataLogic.Role;
@@ -7,6 +8,7 @@ using GameStoreBackEndV1.ServiceLogic.CountryService;
 using GameStoreBackEndV1.ServiceLogic.EmailService;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 using GameStoreBackEndV1.ServiceLogic.GameService;
+using GameStoreBackEndV1.ServiceLogic.PlatformTypeService;
 using GameStoreBackEndV1.ServiceLogic.PlayerRoleService;
 using GameStoreBackEndV1.ServiceLogic.PlayerService;
 using GameStoreBackEndV1.ServiceLogic.RoleService;
@@ -38,6 +40,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<GameRepository>().As<IGameRepository>().InstancePerLifetimeScope();
             builder.RegisterType<GameService>().As<IGameService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<PlatformTypeService>().As<IPlatformTypeService>().InstancePerLifetimeScope();
+            builder.RegisterType<PlatformTypeRepository>().As<IPlatformTypeRepository>().InstancePerLifetimeScope();
         }
     }
 }
