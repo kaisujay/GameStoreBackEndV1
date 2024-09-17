@@ -61,12 +61,11 @@ namespace GameStoreBackEndV1.NuGetDependencies
             CreateMap<PlatformTypeDto, DisplayPlatformTypeDto>().ReverseMap();
 
             //OrderHistory
-            CreateMap<OrderHistoryDataModel, OrderHistoryDto>().ReverseMap();
-            CreateMap<OrderHistoryDto, CreateOrderHistoryDto>().ReverseMap();
-            CreateMap<OrderHistoryDto, DisplayOrderHistoryDto>()
-                .ForMember(dest => dest.PlayerId, opt => opt.MapFrom(src => src.Player.PlayerId))
-                .ForMember(dest => dest.PlayerEmail, opt => opt.MapFrom(src => src.Player.Email))
+            CreateMap<OrderHistoryDataModel, OrderHistoryDto>()
+                .ForMember(dest => dest.Games, opt => opt.MapFrom(src => src.Game))
                 .ReverseMap();
+            CreateMap<OrderHistoryDto, CreateOrderHistoryDto>().ReverseMap();
+            CreateMap<OrderHistoryDto, DisplayOrderHistoryDto>().ReverseMap();
 
             //Rating
             CreateMap<RatingDataModel, RatingDto>().ReverseMap();

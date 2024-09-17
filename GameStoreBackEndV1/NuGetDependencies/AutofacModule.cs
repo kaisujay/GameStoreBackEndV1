@@ -2,6 +2,7 @@
 using GameStoreBackEndV1.DataLogic.Cart;
 using GameStoreBackEndV1.DataLogic.Game;
 using GameStoreBackEndV1.DataLogic.GamePlatformType;
+using GameStoreBackEndV1.DataLogic.OrderHistory;
 using GameStoreBackEndV1.DataLogic.PlatformType;
 using GameStoreBackEndV1.DataLogic.Player;
 using GameStoreBackEndV1.DataLogic.PlayerRole;
@@ -14,6 +15,7 @@ using GameStoreBackEndV1.ServiceLogic.EmailService;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService.ExceptionHandling;
 using GameStoreBackEndV1.ServiceLogic.GamePlatformTypeService;
 using GameStoreBackEndV1.ServiceLogic.GameService;
+using GameStoreBackEndV1.ServiceLogic.OrderHistoryService;
 using GameStoreBackEndV1.ServiceLogic.PlatformTypeService;
 using GameStoreBackEndV1.ServiceLogic.PlayerRoleService;
 using GameStoreBackEndV1.ServiceLogic.PlayerService;
@@ -63,6 +65,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<RatingRepository>().As<IRatingRepository>().InstancePerLifetimeScope();
             builder.RegisterType<RatingService>().As<IRatingService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<OrderHistoryRepository>().As<IOrderHistoryRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<OrderHistoryService>().As<IOrderHistoryService>().InstancePerLifetimeScope();
         }
     }
 }
