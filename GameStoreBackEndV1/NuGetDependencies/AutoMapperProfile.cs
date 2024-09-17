@@ -68,7 +68,14 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //Rating
             CreateMap<RatingDataModel, RatingDto>().ReverseMap();
             CreateMap<RatingDto, CreateRatingDto>().ReverseMap();
-            CreateMap<RatingDto, DisplayRatingDto>().ReverseMap();
+            CreateMap<RatingDto, DeleteRatingDto>().ReverseMap();
+            CreateMap<RatingDto, DisplayRatingDto>()
+                .ForMember(dest => dest.PlayerName, opt => opt.MapFrom(src => src.Player.FullName))
+                .ForMember(dest => dest.PlayerEmail, opt => opt.MapFrom(src => src.Player.Email))
+                .ForMember(dest => dest.PlayerId, opt => opt.MapFrom(src => src.Player.PlayerId))
+                .ForMember(dest => dest.GameName, opt => opt.MapFrom(src => src.Game.Name))
+                .ForMember(dest => dest.GameId, opt => opt.MapFrom(src => src.Game.GameId))
+                .ReverseMap();
 
             //WishList
             CreateMap<WishListDataModel, WishListDto>().ReverseMap();

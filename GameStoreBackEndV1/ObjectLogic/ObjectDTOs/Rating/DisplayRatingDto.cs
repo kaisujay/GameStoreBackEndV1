@@ -8,8 +8,14 @@
 
         public byte Star { get; set; }
 
-        public DisplayPlayerDto Player { get; set; }
+        public Guid PlayerId { get; set; }
 
-        public DisplayGameDto Game { get; set; }
+        public string PlayerName { get; set; }
+
+        public string PlayerEmail { get; set; }
+
+        public Guid GameId { get; set; }
+
+        public string GameName { get; set; }
     }
 }
