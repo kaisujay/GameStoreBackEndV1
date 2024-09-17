@@ -5,6 +5,7 @@ using GameStoreBackEndV1.DataLogic.GamePlatformType;
 using GameStoreBackEndV1.DataLogic.PlatformType;
 using GameStoreBackEndV1.DataLogic.Player;
 using GameStoreBackEndV1.DataLogic.PlayerRole;
+using GameStoreBackEndV1.DataLogic.Rating;
 using GameStoreBackEndV1.DataLogic.Role;
 using GameStoreBackEndV1.DataLogic.WishList;
 using GameStoreBackEndV1.ServiceLogic.CartService;
@@ -16,6 +17,7 @@ using GameStoreBackEndV1.ServiceLogic.GameService;
 using GameStoreBackEndV1.ServiceLogic.PlatformTypeService;
 using GameStoreBackEndV1.ServiceLogic.PlayerRoleService;
 using GameStoreBackEndV1.ServiceLogic.PlayerService;
+using GameStoreBackEndV1.ServiceLogic.RatingService;
 using GameStoreBackEndV1.ServiceLogic.RoleService;
 using GameStoreBackEndV1.ServiceLogic.WishListService;
 
@@ -58,6 +60,9 @@ namespace GameStoreBackEndV1.NuGetDependencies
 
             builder.RegisterType<WishListRepository>().As<IWishListRepository>().InstancePerLifetimeScope();
             builder.RegisterType<WishListService>().As<IWishListService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<RatingRepository>().As<IRatingRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<RatingService>().As<IRatingService>().InstancePerLifetimeScope();
         }
     }
 }
