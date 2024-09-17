@@ -44,9 +44,7 @@ namespace GameStoreBackEndV1.NuGetDependencies
                 .HasKey(x => new { x.WishListId });        // Same as [key] on top of "WishListId"
 
             modelBuilder.Entity<OrderHistoryDataModel>()
-                .HasNoKey()
-                .HasIndex(x => x.PlayerId)
-                .IsUnique(false);
+                .HasIndex(x => x.PlayerId);
         }
     }
 }
