@@ -4,13 +4,15 @@
     {
         public Guid OrderHistoryId { get; set; }
 
+        public Guid OrderId { get; set; }
+
         public Guid PlayerId { get; set; }
 
-        public List<Guid> GameId { get; set; }
+        public Guid GameId { get; set; }
 
         public PlayerDto Player { get; set; }
 
-        public List<GameDto> Games { get; set; }
+        public GameDto Games { get; set; }
 
         public DateTime PurchaseDate { get; set; }
 

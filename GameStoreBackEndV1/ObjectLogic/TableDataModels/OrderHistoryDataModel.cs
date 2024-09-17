@@ -9,6 +9,8 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
         [Key]
         public Guid OrderHistoryId { get; set; }
 
+        public Guid OrderId { get; set; }
+
         public Guid PlayerId { get; set; }
 
         public Guid GameId { get; set; }
