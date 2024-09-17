@@ -9,10 +9,10 @@ namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 
         public Guid PlayerId { get; set; }
 
-        public List<Guid> GameId { get; set; }
+        public Guid GameId { get; set; }
 
         public PlayerTableDataModel Player { get; set; }
 
-        public List<GameDataModel> Games { get; set; }
+        public GameDataModel Game { get; set; }
     }
 }

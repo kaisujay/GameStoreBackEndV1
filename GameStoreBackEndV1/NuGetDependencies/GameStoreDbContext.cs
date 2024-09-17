@@ -41,9 +41,7 @@ namespace GameStoreBackEndV1.NuGetDependencies
                 .HasKey(x => new { x.CartId, x.GameId, x.PlayerId });       // Without this change EF Core is not allowing to Save
 
             modelBuilder.Entity<WishListDataModel>()
-                .HasNoKey()
-                .HasIndex(x => x.PlayerId)
-                .IsUnique(false);
+                .HasKey(x => new { x.WishListId });        // Same as [key] on top of "WishListId"
 
             modelBuilder.Entity<OrderHistoryDataModel>()
                 .HasNoKey()
