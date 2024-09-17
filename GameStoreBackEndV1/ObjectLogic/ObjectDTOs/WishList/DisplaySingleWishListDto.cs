@@ -1,9 +1,9 @@
 ﻿namespace GameStoreBackEndV1.ObjectLogic.TableDataModels
 {
-    public class DisplayWishListDto
+    public class DisplaySingleWishListDto
     {
         public DisplayPlayerDto Player { get; set; }
 
-        public List<DisplayGameDto> Games { get; set; }
+        public DisplayGameDto Game { get; set; }
     }
 }

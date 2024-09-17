@@ -73,6 +73,8 @@ namespace GameStoreBackEndV1.NuGetDependencies
             //WishList
             CreateMap<WishListDataModel, WishListDto>().ReverseMap();
             CreateMap<WishListDto, CreateWishListDto>().ReverseMap();
+            CreateMap<WishListDto, WishListOnlyIdDto>().ReverseMap();
+            CreateMap<WishListDto, DisplaySingleWishListDto>().ReverseMap();
             CreateMap<WishListDto, DisplayWishListDto>().ReverseMap();
 
             //Country
