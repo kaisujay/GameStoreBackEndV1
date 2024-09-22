@@ -69,6 +69,26 @@ builder.Services.AddDbContext<GameStoreDbContext>(option =>
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 #endregion
 
+#region CORSPolicyForAngularApp
+builder.Services.AddCors(option =>
+{
+    /* This "AddDefaultPolicy" is a default setting from Microsoft */
+    //option.AddDefaultPolicy(
+    //        builder => builder
+    //        .AllowAnyOrigin()         //We can also Specify the "Origin" with "WithOrigins" like - .WithOrigins("http://localhost:4200")
+    //        .AllowAnyHeader());    //We can also Specify the "Header" with "WithHeader"
+    //        .AllowAnyMethod()      //We can also Specify the "Method" with "WithMethod"
+
+    /* This "AddPolicy" is a custome setting */
+    option.AddPolicy("customGameStoreCors",
+        builder => builder
+        .WithOrigins("http://localhost:4200")       //This is the Angular App I am using
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        );
+});
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -79,6 +99,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//app.UseCors();  // This is for "AddDefaultPolicy"
+app.UseCors("customGameStoreCors");  // This is for "Named"
 
 //app.UseSerilogRequestLogging();   //Serilog : Not strictly necessary. Saw 2 diff ENTRY for "CountryService" block
 
