@@ -112,14 +112,27 @@ namespace GameStoreBackEndV1.DataLogic.GamePlatformType
             return new GameCategoriesDto { Categories = categoryCounts };
         }
 
-        public async Task<IList<GamePlatformTypeDto>> GetGameByCategoryAsync(string catagoryName)
+        public async Task<IList<GamePlatformTypeDto>> GetGameByCategoryAsync(string catagoryName = "All")
         {
-            var result = await _dbContext.GamePlatformTypes
+            var result = new List<GamePlatformTypeDataModel>();
+            if (catagoryName != "All")
+            {
+                result = await _dbContext.GamePlatformTypes
                         .AsNoTracking()
                         .Include(x => x.PlatformType).AsNoTracking()
                         .Include(x => x.Game).AsNoTracking()
                         .Where(x => x.PlatformType.Name.Contains(catagoryName.ToLower()))
                         .ToListAsync();      // "AsNoTracking()" : Very IMP while Update
+            }
+            else
+            {
+                result = await _dbContext.GamePlatformTypes
+                        .AsNoTracking()
+                        .Include(x => x.PlatformType).AsNoTracking()
+                        .Include(x => x.Game).AsNoTracking()
+                        .ToListAsync();      // "AsNoTracking()" : Very IMP while Update
+            }
+
 
             if (result == null)
             {
