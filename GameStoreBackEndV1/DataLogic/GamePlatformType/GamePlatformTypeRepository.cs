@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GameStoreBackEndV1.NuGetDependencies;
+using GameStoreBackEndV1.ObjectLogic.ObjectDTOs.GamePlayformType;
 using GameStoreBackEndV1.ObjectLogic.TableDataModels;
 using GameStoreBackEndV1.ServiceLogic.ExceptionService;
 using Microsoft.EntityFrameworkCore;
@@ -82,5 +83,34 @@ namespace GameStoreBackEndV1.DataLogic.GamePlatformType
 
             return mappedResult;
         }
+
+        public async Task<GameCategoriesDto> GetGameCategoriesAsync()
+        {
+            var categoryCounts = new Dictionary<Platforms, int> {
+                { Platforms.All, 0 },
+                { Platforms.PlayStation, 0 },
+                { Platforms.PC, 0 },
+                { Platforms.Xbox, 0 },
+            };
+
+            var categories = await _dbContext.GamePlatformTypes
+                                    .AsNoTracking()
+                                    .Include(x => x.PlatformType)
+                                    .GroupBy(x => new { x.PlatformTypeId, x.PlatformType.Name })
+                                    .Select(g => new { g.Key.Name, Count = g.Count() })
+                                    .ToListAsync();
+
+            foreach (var category in categories)
+            {
+                if (Enum.TryParse<Platforms>(category.Name, out var platform))
+                {
+                    categoryCounts[platform] = categoryCounts.GetValueOrDefault(platform) + category.Count;
+                }
+                categoryCounts[Platforms.All] += category.Count;
+            }
+
+            return new GameCategoriesDto { Categories = categoryCounts };
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GameStoreBackEndV1.DataLogic.Game;
 using GameStoreBackEndV1.DataLogic.GamePlatformType;
+using GameStoreBackEndV1.ObjectLogic.ObjectDTOs.GamePlayformType;
 using GameStoreBackEndV1.ObjectLogic.TableDataModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,6 +50,13 @@ namespace GameStoreBackEndV1.ServiceLogic.GamePlatformTypeService
             var result = await _gamePlatformTypeRepository.GetByGameNameAsync(gameName);
 
             return _mapper.Map<DisplayGamePlatformTypeDto>(result);
+        }
+
+        public async Task<GameCategoriesDto> GetGameCategoriesAsync()
+        {
+            var result = await _gamePlatformTypeRepository.GetGameCategoriesAsync();
+
+            return result;
         }
     }
 }

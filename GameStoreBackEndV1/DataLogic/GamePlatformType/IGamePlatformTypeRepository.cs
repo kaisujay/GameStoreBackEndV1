@@ -1,4 +1,5 @@
-﻿using GameStoreBackEndV1.ObjectLogic.TableDataModels;
+﻿using GameStoreBackEndV1.ObjectLogic.ObjectDTOs.GamePlayformType;
+using GameStoreBackEndV1.ObjectLogic.TableDataModels;
 
 namespace GameStoreBackEndV1.DataLogic.GamePlatformType
 {
@@ -13,5 +14,7 @@ namespace GameStoreBackEndV1.DataLogic.GamePlatformType
         Task<GamePlatformTypeDto> GetByGameNameAsync(string gameName);
 
         Task<GamePlatformTypeDto> GetByPlatformTypeIdAsync(Guid id);
+
+        Task<GameCategoriesDto> GetGameCategoriesAsync();
     }
 }

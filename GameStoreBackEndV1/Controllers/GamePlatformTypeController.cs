@@ -46,6 +46,13 @@ namespace GameStoreBackEndV1.Controllers
             return Ok(res);
         }
 
+        [HttpGet("GetGameCatagories")]
+        public async Task<IActionResult> GetGameCatagoriesAsync()
+        {
+            var res = await _gamePlatformTypeService.GetGameCategoriesAsync();
+            return Ok(res);
+        }
+
         [HttpPost("CreateGamePlatformType")]
         public async Task<IActionResult> Post([FromBody] CreateGamePlatformTypeDto createGamePlatformType)
         {
