@@ -16,5 +16,7 @@ namespace GameStoreBackEndV1.DataLogic.GamePlatformType
         Task<GamePlatformTypeDto> GetByPlatformTypeIdAsync(Guid id);
 
         Task<GameCategoriesDto> GetGameCategoriesAsync();
+
+        Task<IList<GamePlatformTypeDto>> GetGameByCategoryAsync(string catagoryName);
     }
 }

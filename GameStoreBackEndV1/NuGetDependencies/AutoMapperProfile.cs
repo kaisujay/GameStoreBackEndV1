@@ -49,6 +49,7 @@ namespace GameStoreBackEndV1.NuGetDependencies
             CreateMap<GameDataModel, GameDto>().ReverseMap();
             CreateMap<GameDto, CreateAndUpdateGameDto>().ReverseMap();
             CreateMap<GameDto, DisplayGameDto>().ReverseMap();
+            CreateMap<GameDataModel, DisplayGameDto>().ReverseMap();
 
             //GamePlatformType
             CreateMap<GamePlatformTypeDataModel, GamePlatformTypeDto>().ReverseMap();

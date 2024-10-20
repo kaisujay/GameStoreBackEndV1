@@ -58,5 +58,12 @@ namespace GameStoreBackEndV1.ServiceLogic.GamePlatformTypeService
 
             return result;
         }
+
+        public async Task<IList<GamePlatformTypeDto>> GetGameByCategoryAsync(string catagoryName)
+        {
+            var result = await _gamePlatformTypeRepository.GetGameByCategoryAsync(catagoryName);
+
+            return result;
+        }
     }
 }
